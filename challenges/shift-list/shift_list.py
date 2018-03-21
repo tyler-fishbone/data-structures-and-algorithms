@@ -1,0 +1,14 @@
+def insert_shift_list(list_input, val):
+    # if list_input is bool:
+    #     raise SyntaxError('Argument invalid. Must be valid list.')
+        
+    list_output = []
+    list_midpoint = len(list_input) // 2 + 1
+    for i in range(len(list_input) + 1):
+        if i < list_midpoint:
+            list_output += [list_input[i]]
+        elif i == list_midpoint:
+            list_output += [val]
+        else:
+            list_output += [list_input[i - 1]]
+    return list_output
