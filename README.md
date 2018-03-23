@@ -6,6 +6,8 @@ Follows a standard GitHub workflow for cloning and requiring implementations usi
 
 ## Table of Contents
 1. Data Structures
-    - [List](./data_structures/list)
+    - 
 2. Algorithms
-    - [FizzBuzz](./challenges/fizzbuzz)
+    - [Shift List](./challenges/shift-list)
+    - [Binary List](./challenges/binary-search)
+    - [Largest Product](./challenges/largest-product)

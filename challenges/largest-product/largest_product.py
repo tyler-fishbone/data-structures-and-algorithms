@@ -1,4 +1,7 @@
 def largest_product(lst):
+    '''
+    This function takes in an array of arrays and returns the largest product of any two elements that are adjeacent to each other. Adjacent is defined as in the same nested array, or having the same second index as element in an adjacent array.
+    '''
     try:    
         largest_product = lst[0][0] * lst[0][1]
         for i in range(len(lst)-1):
