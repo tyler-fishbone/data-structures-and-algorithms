@@ -27,12 +27,12 @@ class LinkedList:
         """
         # if val is None:
         #     raise AssertionError('Must insert a value to use .insert')
-        try:
-            self.head = Node(val, self.head)
-            self._size += 1
-        except AttributeError:
-            print('Must insert a value to use .insert')
-            return False
+        # try:
+        self.head = Node(val, self.head)
+        self._size += 1
+        # except (AssertionError, TypeError):
+        #     print('Must insert a value to use .insert')
+        #     return False
     
     def find(self, val):
         """

@@ -45,10 +45,10 @@ def test_inserting_node_after_iter(small_ll):
 #     check if iterable valid
 #     """
 #     assert empty_ll.insert() == False
-    # with pytest.raises(TypeError) as err:
-    #     empty_ll.insert()
+#     with pytest.raises(TypeError) as err:
+#         empty_ll.insert()
 
-    # assert str(err.value) == 'Must insert a value to use .insert'
+#     assert str(err.value) == 'Must insert a value to use .insert'
 
 def test_find_method_val_at_head_position_valid(small_ll):
     """
