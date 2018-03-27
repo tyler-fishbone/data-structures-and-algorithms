@@ -75,3 +75,55 @@ def test_find_method_val_invalid(small_ll):
     tests that find method returns false when not in the LL
     """
     assert small_ll.find(100) == False
+
+# append
+
+def test_append_linked_list_valid(small_ll):
+    """
+    tests the append method with an array that already has values
+    """
+    small_ll.append('hellew')
+    assert small_ll.find('hellew') == True
+
+def test_append_empty_linked_list_valid(empty_ll):
+    """
+    tests the append method with to an array method
+    """
+    empty_ll.append('hellew')
+    assert empty_ll.find('hellew') == True
+
+# insert before
+
+def test_insert_before_with_filled_linked_list_valid(small_ll):
+    """
+    test that insert before inserts an element correctly
+    """
+    small_ll.insert_before(7, 'X')
+    assert small_ll.head._next._next.val == 'X'
+
+
+
+def test_insert_before_with_filled_linked_list_invalid(small_ll):
+    """
+    test that insert before throws correct exception when val is not in list
+    """
+    with pytest.raises(ValueError) as err:
+        small_ll.insert_before(11, 'X')
+
+    assert str(err.value) == "Data not in list"
+
+
+# insert after
+
+def test_insert_after_with_filled_linked_list_check_size_valid(small_ll):
+    """
+    test that insert after inserts an element correctly
+    """
+    assert small_ll.insert_after(7, 'X') == 5
+    
+def test_insert_after_with_filled_linked_list_valid(small_ll):
+    """
+    test that insert after inserts an element correctly
+    """
+    small_ll.insert_after(7, 'X')
+    assert small_ll.head._next._next._next.val == 'X'
