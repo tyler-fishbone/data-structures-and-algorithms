@@ -1,5 +1,6 @@
 import pytest, conftest
 from linked_list import LinkedList as LL
+from linked_list import merge_lists
 
 def test_empty_ll(empty_ll):
     """
@@ -151,3 +152,28 @@ def test_kth_from_end_invalid(small_ll):
     """
     with pytest.raises(AttributeError):
         small_ll.kth_from_end(6)
+
+# merge lists function
+
+def test_merge_list_valid(one_four_ll, a_d_ll):
+    """
+    test merge list function to ensure two lists when passed in are 'zipped' together
+    """
+    merge_lists(one_four_ll, a_d_ll)
+    assert str(one_four_ll.head._next.val) == 'a'
+
+def test_merge_list_valid_switched(one_four_ll, a_d_ll):
+    """
+    test merge list function to ensure two lists when passed in are 'zipped' together
+    """
+    merge_lists(a_d_ll, one_four_ll)
+    assert str(a_d_ll.head.val) == 'a'
+    assert a_d_ll.head._next.val == 1
+
+def test_merge_list_valid_switched_extended(one_four_ll, a_d_ll):
+    """
+    test merge list function to ensure two lists when passed in are 'zipped' together. traverse further along to check alternation
+    """
+    merge_lists(a_d_ll, one_four_ll)
+    assert str(a_d_ll.head._next._next.val) == 'b'
+    assert a_d_ll.head._next._next._next.val == 2

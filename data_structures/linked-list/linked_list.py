@@ -102,3 +102,20 @@ class LinkedList:
             return temp
         else:
             raise AttributeError('Your input value is larger than the linked list')
+
+def merge_lists(a, b):
+    v1 = a.head
+    v2 = b.head
+    v3 = v1._next
+    v4 = v2._next
+    if a._size < b._size:
+        counter = a._size
+    else:
+        counter = b._size
+    while counter > 0:
+        v1._next = v2
+        v2._next = v3
+        v1 = v3
+        v2 = v4
+        counter -= 1
+    

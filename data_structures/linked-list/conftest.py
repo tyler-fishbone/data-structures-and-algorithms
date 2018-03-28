@@ -3,6 +3,13 @@ from linked_list import LinkedList as LL
 from node import Node
 
 @pytest.fixture
+def node_val_1():
+    """
+    creates single node for testing
+    """
+    return Node(1)
+
+@pytest.fixture
 def empty_ll():
     """
     creates empty linked list for testing
@@ -17,8 +24,15 @@ def small_ll():
     return LL([5,6,7,8])
 
 @pytest.fixture
-def node_val_1():
+def one_four_ll():
     """
-    creates single node for testing
+    creates linked list with with values 1-4
     """
-    return Node(1)
+    return LL([1,2,3,4])
+
+@pytest.fixture
+def a_d_ll():
+    """
+    creates linked list with with values a, b, c, d
+    """
+    return LL(['a', 'b', 'c', 'd'])
