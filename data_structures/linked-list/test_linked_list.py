@@ -127,3 +127,27 @@ def test_insert_after_with_filled_linked_list_valid(small_ll):
     """
     small_ll.insert_after(7, 'X')
     assert small_ll.head._next._next._next.val == 'X'
+
+# kth from end
+
+def test_kth_from_end_valid(small_ll):
+    """
+    test that method correctly finds the reverse position
+    of the element
+    """
+    assert small_ll.kth_from_end(1).val == 7
+
+def test_kth_from_end_last_el_valid(small_ll):
+    """
+    test that method correctly finds the reverse position
+    of the element
+    """
+    assert small_ll.kth_from_end(0).val == 8
+
+def test_kth_from_end_invalid(small_ll):
+    """
+    test that method throws catches exception when passed in value
+    is outside of index of list
+    """
+    with pytest.raises(AttributeError):
+        small_ll.kth_from_end(6)

@@ -39,7 +39,7 @@ class LinkedList:
             temp = temp._next
         return False
     
-        def append(self, val):
+    def append(self, val):
         """
         appends a value at the end of the linked list
         """
@@ -87,3 +87,18 @@ class LinkedList:
             temp = temp._next
         if temp._next is None:
             raise ValueError("Data not in list")
+
+    def kth_from_end(self, k):
+        """
+        takes in a value k and returns in the reverse 
+        index position of that element in the array
+        """
+        if k <= self._size:
+            r = self._size - k - 1
+            temp = self.head
+            while r > 0:
+                temp = temp._next
+                r -= 1
+            return temp
+        else:
+            raise AttributeError('Your input value is larger than the linked list')
