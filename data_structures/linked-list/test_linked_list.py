@@ -1,6 +1,7 @@
 import pytest, conftest
 from linked_list import LinkedList as LL
-from linked_list import merge_lists
+from linked_list import merge_lists, has_loop
+
 
 def test_empty_ll(empty_ll):
     """
@@ -8,6 +9,7 @@ def test_empty_ll(empty_ll):
     tests that LL with an inserted 1 now has 1 as it's head val
     """
     assert empty_ll.head is None
+
 
 def test_insert_first_node(empty_ll):
     """
@@ -17,11 +19,13 @@ def test_insert_first_node(empty_ll):
     empty_ll.insert(1)
     assert empty_ll.head.val == 1
 
+
 def test_make_ll_by_passing_in_iter(small_ll):
     """
     tests that a LL instantiated with an iter returns first val of head as iter
     """
     assert small_ll.head.val == 5
+
 
 def test_check_valid_iterable():
     """
@@ -33,6 +37,7 @@ def test_check_valid_iterable():
     assert str(err.value) == 'Invalid iterable'
 
 
+
 def test_inserting_node_after_iter(small_ll):
     """
     tests that a LL instantiated with an iter returns first val of head as iter
@@ -40,6 +45,7 @@ def test_inserting_node_after_iter(small_ll):
     small_ll.insert('new item')
     assert small_ll.head.val == 'new item'
     assert small_ll.head._next.val == 5
+
 
 # def test_check_insert_not_none(empty_ll):
 #     """
@@ -51,11 +57,13 @@ def test_inserting_node_after_iter(small_ll):
 
 #     assert str(err.value) == 'Must insert a value to use .insert'
 
+
 def test_find_method_val_at_head_position_valid(small_ll):
     """
     tests that find method returns true when given a val that is in the LL at the head
     """
     assert small_ll.find(5) == True
+
 
 def test_find_method_val_not_at_head_valid(small_ll):
     """
@@ -64,12 +72,14 @@ def test_find_method_val_not_at_head_valid(small_ll):
     """
     assert small_ll.find(7) == True
 
+
 def test_find_method_inserted_value_valid(small_ll):
     """
     tests that find method returns true when given a val that has just been inserted
     """
     small_ll.insert('test insert')
     assert small_ll.find('test insert') == True
+
 
 def test_find_method_val_invalid(small_ll):
     """
@@ -79,12 +89,14 @@ def test_find_method_val_invalid(small_ll):
 
 # append
 
+
 def test_append_linked_list_valid(small_ll):
     """
     tests the append method with an array that already has values
     """
     small_ll.append('hellew')
     assert small_ll.find('hellew') == True
+
 
 def test_append_empty_linked_list_valid(empty_ll):
     """
@@ -95,6 +107,7 @@ def test_append_empty_linked_list_valid(empty_ll):
 
 # insert before
 
+
 def test_insert_before_with_filled_linked_list_valid(small_ll):
     """
     test that insert before inserts an element correctly
@@ -102,12 +115,14 @@ def test_insert_before_with_filled_linked_list_valid(small_ll):
     small_ll.insert_before(7, 'X')
     assert small_ll.head._next._next.val == 'X'
 
+
 def test_insert_after_with_filled_linked_list_check_size_valid(small_ll):
     """
     test that insert after inserts an element correctly
     """
     assert small_ll.insert_after(7, 'X') == 5
-    
+
+
 def test_insert_after_with_filled_linked_list_valid(small_ll):
     """
     test that insert after inserts an element correctly
@@ -117,6 +132,7 @@ def test_insert_after_with_filled_linked_list_valid(small_ll):
 
 # kth from end
 
+
 def test_kth_from_end_valid(small_ll):
     """
     test that method correctly finds the reverse position
@@ -124,12 +140,14 @@ def test_kth_from_end_valid(small_ll):
     """
     assert small_ll.kth_from_end(1).val == 7
 
+
 def test_kth_from_end_last_el_valid(small_ll):
     """
     test that method correctly finds the reverse position
     of the element
     """
     assert small_ll.kth_from_end(0).val == 8
+
 
 def test_kth_from_end_invalid(small_ll):
     """
@@ -141,12 +159,14 @@ def test_kth_from_end_invalid(small_ll):
 
 # merge lists function
 
+
 def test_merge_list_valid(one_four_ll, a_d_ll):
     """
     test merge list function to ensure two lists when passed in are 'zipped' together
     """
     merge_lists(one_four_ll, a_d_ll)
     assert str(one_four_ll.head.val) == 'a'
+
 
 def test_merge_list_valid_switched(one_four_ll, a_d_ll):
     """
@@ -156,12 +176,14 @@ def test_merge_list_valid_switched(one_four_ll, a_d_ll):
     assert a_d_ll.head._next.val == 'a'
     assert a_d_ll.head.val.val == 1
 
+
 def test_merge_list_valid_switched_extended(one_four_ll, a_d_ll):
     """
     test merge list function to ensure two lists when passed in are 'zipped' together. traverse further along to check alternation
     """
     merge_lists(a_d_ll, one_four_ll)
     assert a_d_ll.head._next._next._next.val == 'b'
+
 
 def test_merge_with_one_empty_list(one_four_ll, empty_ll):
     """
@@ -171,6 +193,7 @@ def test_merge_with_one_empty_list(one_four_ll, empty_ll):
     assert one_four_ll.head.val == 1
     assert one_four_ll.head._next.val == 2
 
+
 def test_merge_with_one_empty_list_switched(one_four_ll, empty_ll):
     """
     test merge list function with one empty linked list and one full linked list
@@ -178,6 +201,7 @@ def test_merge_with_one_empty_list_switched(one_four_ll, empty_ll):
     merge_lists(empty_ll, one_four_ll)
     assert one_four_ll.head.val == 1
     assert one_four_ll.head._next.val == 2
+
 
 def test_merge_with_one_shorter_valid(one_four_ll, a_b_cap_ll):
     """
@@ -187,3 +211,27 @@ def test_merge_with_one_shorter_valid(one_four_ll, a_b_cap_ll):
     # assert one_four_ll.head.val == 1
     assert one_four_ll.head._next._next._next._next.val == 3
     
+# has loop
+
+
+def test_has_loop_has_none(one_four_ll):
+    """
+    test has loop with valid case of false
+    """
+    assert has_loop(LL([1,2,3,4])) == False
+
+
+def test_has_loop_circular_valid(one_four_ll):
+    """
+    test has loop with valid case of true circular
+    """
+    ll = LL([1,2,3,4,5,6])
+    ll.head._next._next = ll.head
+    assert has_loop(ll) == True
+
+
+def test_has_loop_empty_ll_valid(empty_ll):
+    """
+    tests empty linked list returns False
+    """
+    assert has_loop(empty_ll) == -1

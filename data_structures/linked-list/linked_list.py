@@ -110,7 +110,6 @@ def merge_lists(a, b):
     if a.head == None:
         return b
 
-
     if a._size >= b._size:
         temp1, temp2 = a.head, b.head
         while temp2 is not None:
@@ -123,3 +122,26 @@ def merge_lists(a, b):
             b.insert_before(temp2.val, temp1)
             temp1, temp2 = temp1._next, temp2._next
         return b
+
+
+def has_loop(input_ll):
+    """
+    this method will return true of false based on whether a linked list is 'circular',
+    meanding that it has a value who's ._next property points to itself
+    """
+    try:
+        current = input_ll.head
+        for i in range(input_ll._size - 1):
+            current = current._next
+        return current._next is not None
+    except AttributeError:
+        print('\nInput list is empty, please end valid linked list')
+        return -1
+    
+    
+
+print(has_loop(LinkedList([1, 2, 3, 4])))
+
+ll = LinkedList([1, 2, 3, 4, 5, 6])
+ll.head._next._next = ll.head
+print(has_loop(ll))
