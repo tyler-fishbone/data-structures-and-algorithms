@@ -1,5 +1,6 @@
 import pytest, conftest
 from linked_list import LinkedList as LL
+from linked_list import merge_lists
 
 def test_empty_ll(empty_ll):
     """
@@ -101,20 +102,6 @@ def test_insert_before_with_filled_linked_list_valid(small_ll):
     small_ll.insert_before(7, 'X')
     assert small_ll.head._next._next.val == 'X'
 
-
-
-def test_insert_before_with_filled_linked_list_invalid(small_ll):
-    """
-    test that insert before throws correct exception when val is not in list
-    """
-    with pytest.raises(ValueError) as err:
-        small_ll.insert_before(11, 'X')
-
-    assert str(err.value) == "Data not in list"
-
-
-# insert after
-
 def test_insert_after_with_filled_linked_list_check_size_valid(small_ll):
     """
     test that insert after inserts an element correctly
@@ -151,3 +138,52 @@ def test_kth_from_end_invalid(small_ll):
     """
     with pytest.raises(AttributeError):
         small_ll.kth_from_end(6)
+
+# merge lists function
+
+def test_merge_list_valid(one_four_ll, a_d_ll):
+    """
+    test merge list function to ensure two lists when passed in are 'zipped' together
+    """
+    merge_lists(one_four_ll, a_d_ll)
+    assert str(one_four_ll.head.val) == 'a'
+
+def test_merge_list_valid_switched(one_four_ll, a_d_ll):
+    """
+    test merge list function to ensure two lists when passed in are 'zipped' together
+    """
+    merge_lists(a_d_ll, one_four_ll)
+    assert a_d_ll.head._next.val == 'a'
+    assert a_d_ll.head.val.val == 1
+
+def test_merge_list_valid_switched_extended(one_four_ll, a_d_ll):
+    """
+    test merge list function to ensure two lists when passed in are 'zipped' together. traverse further along to check alternation
+    """
+    merge_lists(a_d_ll, one_four_ll)
+    assert a_d_ll.head._next._next._next.val == 'b'
+
+def test_merge_with_one_empty_list(one_four_ll, empty_ll):
+    """
+    test merge list function with one empty linked list and one full linked list
+    """
+    merge_lists(one_four_ll, empty_ll)
+    assert one_four_ll.head.val == 1
+    assert one_four_ll.head._next.val == 2
+
+def test_merge_with_one_empty_list_switched(one_four_ll, empty_ll):
+    """
+    test merge list function with one empty linked list and one full linked list
+    """
+    merge_lists(empty_ll, one_four_ll)
+    assert one_four_ll.head.val == 1
+    assert one_four_ll.head._next.val == 2
+
+def test_merge_with_one_shorter_valid(one_four_ll, a_b_cap_ll):
+    """
+    test merge list function where second list is shorter
+    """
+    merge_lists(one_four_ll, a_b_cap_ll)
+    # assert one_four_ll.head.val == 1
+    assert one_four_ll.head._next._next._next._next.val == 3
+    
