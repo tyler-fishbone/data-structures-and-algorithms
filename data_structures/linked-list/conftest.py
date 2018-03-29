@@ -36,3 +36,11 @@ def a_d_ll():
     creates linked list with with values a, b, c, d
     """
     return LL(['a', 'b', 'c', 'd'])
+
+@pytest.fixture
+def a_b_cap_ll():
+    """
+    creates linked list with with values a, b, c, d
+    """
+    return LL(['A', 'B'])
+

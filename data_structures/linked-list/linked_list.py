@@ -50,29 +50,25 @@ class LinkedList:
         self._size += 1
         return self._size
 
-    def insert_before(self, value, newVal):
+    def insert_before(self, val, newVal):
         """
-        inserts a node before a specified node
+        Add a new node with the given newValue immediately before the first value node
         """
-        # new_node = Node(newVal, value)
-        # temp = self.head
-        # while temp:
-        #     if temp._next == value:
-        #         temp._next = new_node
-        #         self._size += 1
-        #         return self._size
-        #     temp = temp._next
-        new_node = Node(newVal)
-        temp = self.head._next
-        while temp._next is not None:
-            if temp._next.val == value:
-                new_node._next = temp._next
-                temp._next = new_node
-                self._size += 1
-                return self._size
-            temp = temp._next
-        if temp._next is None:
-            raise ValueError("Data not in list")
+        current = self.head
+        previous = None
+        while current:
+            if current.val == val:
+                if previous is None:
+                    self.insert(newVal)
+                else:
+                    new_node = Node(newVal)
+                    new_node._next = current
+                    previous._next = new_node
+                    self._size += 1
+                break
+            previous = current
+            current = current._next
+
     
     def insert_after(self, value, newVal):
         """
@@ -85,8 +81,8 @@ class LinkedList:
                 self._size += 1
                 return self._size
             temp = temp._next
-        if temp._next is None:
-            raise ValueError("Data not in list")
+        # if temp._next is None:
+        #     raise ValueError("Data not in list")
 
     def kth_from_end(self, k):
         """
@@ -103,19 +99,27 @@ class LinkedList:
         else:
             raise AttributeError('Your input value is larger than the linked list')
 
+
 def merge_lists(a, b):
-    v1 = a.head
-    v2 = b.head
-    v3 = v1._next
-    v4 = v2._next
-    if a._size < b._size:
-        counter = a._size
+    """
+    a function to zip together two linked lists augmenting the first linked list
+    passed in to have the second LL values in it alternating
+    """
+    if b.head == None:
+        return a
+    if a.head == None:
+        return b
+
+
+    if a._size >= b._size:
+        temp1, temp2 = a.head, b.head
+        while temp2 is not None:
+            a.insert_before(temp1.val, temp2)
+            temp1, temp2 = temp1._next, temp2._next
+        return a
     else:
-        counter = b._size
-    while counter > 0:
-        v1._next = v2
-        v2._next = v3
-        v1 = v3
-        v2 = v4
-        counter -= 1
-    
+        temp1, temp2 = a.head, b.head
+        while temp1 is not None:
+            b.insert_before(temp2.val, temp1)
+            temp1, temp2 = temp1._next, temp2._next
+        return b
