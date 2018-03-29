@@ -137,6 +137,8 @@ def has_loop(input_ll):
     except AttributeError:
         print('\nInput list is empty, please end valid linked list')
         return -1
+    
+    
 
 print(has_loop(LinkedList([1, 2, 3, 4])))
 
