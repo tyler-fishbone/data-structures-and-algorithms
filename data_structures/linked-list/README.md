@@ -21,8 +21,22 @@ I am out at the farmers market checking out a nice loaf of bread when it sprouts
 ## Solution
 ![Solution](./../../assets/07_kth_from_end.JPG)
 
+
+
 ## Overview - Merge Lists
 It's lunch and I've decided to sun myself on my favorite rock in Seattle center. A socialized yound squirrel bounds up to me and issues me the following challenge.
+
+## Challenge
+'Churrk. Hey you. You there. Write a function called mergeLists which takes two linked lists as arguments. Zip the two linked lists together into one so that the nodes alternate between the two lists and return a reference to the head of the single list. Try and keep additional space down to O(1). You have access to the Node class and all the properties on the Linked List class as well as the methods created in previous challenges. Thanks! Can I have your sandwich?'
+
+## Solution
+![Solution](./../../assets/08_merge_lists.JPG)
+
+
+
+
+## Overview - Merge Lists
+I've chartered the first ever virgin galactic flight and it's amazing. While I'm using spacebath room and an off gelatinous being seeps out of the faucet and says the following:
 
 ## Challenge
 'Churrk. Hey you. You there. Write a function called mergeLists which takes two linked lists as arguments. Zip the two linked lists together into one so that the nodes alternate between the two lists and return a reference to the head of the single list. Try and keep additional space down to O(1). You have access to the Node class and all the properties on the Linked List class as well as the methods created in previous challenges. Thanks! Can I have your sandwich?'
