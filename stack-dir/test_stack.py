@@ -62,13 +62,13 @@ def test_push_for_bool(one_nine_stack):
 
 def test_pop_returns_valid(one_nine_stack):
     """
-    checks return ppopped value to be correct
+    checks return popped value to be correct
     """
     assert one_nine_stack.pop().val == 1
 
 def test_pop_from_empty_stack(empty_stack):
     """
-    checks return ppopped value to be correct
+    checks return popped value of empty stack is expected response False
     """
     assert empty_stack.pop() is False
 
