@@ -44,7 +44,9 @@ class Queue:
             self._size += 1
             return node
 
-        self._back._next = self._back = node
+        # self._back._next = self._back = node # <- ef that notation
+        self._back._next = node
+        self._back = self._back._next
         self._size += 1
         return node
 
@@ -66,6 +68,9 @@ class Queue:
         iterates through the queue to find front node, then removes/returns it
         """
         ## Megan flipped Method
+        if self._size == 0:
+            raise IndexError('List is empty')
+
         temp = self._front
         self._front = temp._next
         self._size -= 1
