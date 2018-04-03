@@ -39,7 +39,7 @@ class Queue:
         ## Megan flipped method
         node = Node(val)
         
-        if self._size == 0
+        if self._size == 0:
             self._front = self._back = node
             self._size += 1
             return node
