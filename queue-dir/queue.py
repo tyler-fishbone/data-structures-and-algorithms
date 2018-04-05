@@ -69,7 +69,7 @@ class Queue:
         """
         ## Megan flipped Method
         if self._size == 0:
-            raise IndexError('List is empty')
+            return False
 
         temp = self._front
         self._front = temp._next
