@@ -5,12 +5,13 @@ def multi_bracket_validation(input_str):
     """ function which takes in string and returns a bool of if it is balanced
     Round Brackets : () | Square Brackets : [] | Curly Brackets : {}
     """
-    opening_brackets = ['(', '[', '{']
-    closing_brackets = [')', ']', '}']
     bracket_dict = {'(': ')',
                     '[': ']',
                     '{': '}',
                     }
+    opening_brackets = bracket_dict.keys()
+    closing_brackets = bracket_dict.values()
+    
     s = Stack()
 
     for i in input_str:
