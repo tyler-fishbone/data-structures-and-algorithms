@@ -35,5 +35,5 @@ def breadth_first_traversal(binary_search_tree):
     return array_for_testing
 
 
-lil_bst = BST([5,3,1,4,10,7,12])
-breadth_first_traversal(lil_bst)
+# lil_bst = BST([5,3,1,4,10,7,12])
+# breadth_first_traversal(lil_bst)
