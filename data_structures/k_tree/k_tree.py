@@ -1,13 +1,15 @@
+from .queue import Queue
+
 class Node:
     """
     Creating nodes for use in data structures
     """
-    def __init__(self, val, children = []):
+    def __init__(self, val=None):
         """
         method called upon creation of node
         """
         self.val = val
-        self.children = children
+        self.children = []
 
     def __repr__(self):
         """
@@ -26,7 +28,7 @@ class KTree:
     """ 
     class for the k-ary tree 
     """
-    def __init__(self, ):
+    def __init__(self):
         """ initialization of the k-ary tree """
         self.root = None
         self._size = 0
@@ -44,51 +46,63 @@ class KTree:
         return self.root.val
 
     
-    def insert(self, node, parent_node_val = None):
+    def insert(self, parent_node_val, val = None):
         """
         method for inserting new nodes into k-ary tree 
         """
-        if parent_node_val is None and self.root is None:
+        queue = Queue()
+
+        node = Node(val)
+        if self.root is None:
             self.root = node
             self._size += 1
             return
 
-        breadth_first_list = self.breadth_first_traversal()
-
-        for i in breadth_first_list:
-            if i.val == parent_node_val:
-                i.children.append(node)
+        queue.enqueue(self.root)
+        while len(queue) > 0:
+            current = queue.dequeue()
+            if current.val == parent_node_val:
+                current.children.append(node)
                 self._size += 1
                 return
+            traverse.append(current.val)
+            for child in current.children:
+                queue.enqueue(child)
+        return traverse
     
-    def breadth_first_traversal(self, function_lambda = None):
+    def breadth_first_traversal(self, function_lambda):
         """ 
         defines a method for traversing a k-ary tree from shallowest 
         to deepest level
         """
-        breadth_first_list = [self.root]
 
-        for i in range(self._size):
-            function_lambda
-            breadth_first_list += breadth_first_list[i-1].children       
-        
-        return breadth_first_list
-        
+        queue = Queue()
+        traverse = []
 
-    def pre_order_traversal(self, function_lambda = None):
+        queue.enqueue(self.root)
+        while len(queue) > 0:
+            current = queue.dequeue()
+            function_lambda(current)
+            traverse.append(current.val)
+            for child in current.children:
+                queue.enqueue(child)
+        return traverse
+
+
+
+    def pre_order_traversal(self, function_lambda):
         """
         defines a method for traversing a k-ary tree, perfomring
         operations on each node as it is first reached
         """
         def _walk(node = None):
-            if len(node.children) < 1:
+            if node is None:
                 return
             
             function_lambda(node)
 
-            if len(node.children) > 0:
-                for node in node.children:
-                    _walk(node)
+            for child in node.children:
+                    _walk(child)
             
         _walk(self.root)
 
@@ -99,12 +113,11 @@ class KTree:
         operations on each node as it is last passed by
         """
         def _walk(node = None):
-            if len(node.children) < 1:
+            if node is None:
                 return
 
-            if len(node.children) > 0:
-                for node in node.children:
-                    _walk(node)
+            for child in node.children:
+                _walk(child)
             
             function_lambda(node)
             
