@@ -1,4 +1,4 @@
-from .queue import Queue
+from queue import Queue
 
 class Node:
     """
@@ -51,6 +51,7 @@ class KTree:
         method for inserting new nodes into k-ary tree 
         """
         queue = Queue()
+        traverse = []
 
         node = Node(val)
         if self.root is None:

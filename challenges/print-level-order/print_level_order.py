@@ -1,5 +1,5 @@
-from .queue import Queue
-from .k_tree import Node, KTree
+from queue import Queue
+from k_tree import Node, KTree
 
 def print_level_order(input_tree):
     """ 
@@ -11,17 +11,20 @@ def print_level_order(input_tree):
     output_lst = []
     queue = Queue()
 
-    queue.enqueue(input_tree.root)
-    queue.enqueue(Node('/n'))
+    if input_tree._size > 0:
+        queue.enqueue(input_tree.root)
+        queue.enqueue(Node('/n'))
+        while len(queue) > 0:
+            current = queue.dequeue()
+            if current.val == '/n':
+                queue.enqueue(Node('/n'))
+            else:
+                for child in current.children:
+                    queue.enqueue(child)
+            output_lst.append(current.val)
+            if queue._size <= 1:
+                break
     
-    while len(queue) > 0:
-        current = queue.dequeue()
-        if current.val == '/n':
-            queue.enqueue(Node('/n')
-        else:
-            for child in current.children:
-                queue.enqueue(child)
-        output_lst.append(current.val)
-    
-    output_string = ''.join(output_lst)
+    print(output_lst)
+    output_string = ''.join(str(x) for x in output_lst)
     return output_string
