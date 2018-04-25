@@ -1,5 +1,5 @@
 import pytest
-from .k_tree import Node, KTree
+from k_tree import Node, KTree
 
 @pytest.fixture
 def ktree_four_nodes():
