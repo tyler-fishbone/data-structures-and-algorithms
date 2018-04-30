@@ -73,4 +73,3 @@ class HashTable:
             current = current._next
         print('The key {} is not in this hash table'.format(key))
         return False
-
