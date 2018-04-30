@@ -79,7 +79,24 @@ class LinkedList:
             previous = current
             current = current._next
 
-    
+
+    def remove(self, val):
+        """Remove a node."""
+        current = self.head
+        previous = None
+        while current:
+            if current.val == val:
+                if previous is None:
+                    self.head = current._next
+                    return current.val
+                else:
+                    previous._next = current._next
+                    return current.val
+            previous = current
+            current = current._next
+        return False
+
+
     def insert_after(self, value, newVal):
         """
         inserts a node after a specified node
