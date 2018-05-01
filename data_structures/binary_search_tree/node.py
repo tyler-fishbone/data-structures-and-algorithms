@@ -2,7 +2,7 @@ class Node:
     """
     Creating nodes for use in data structures
     """
-    def __init__(self, val, next = None):
+    def __init__(self, val, next=None):
         """
         method called upon creation of node
         """
@@ -15,11 +15,10 @@ class Node:
         string representation of node for dev
         """
         return 'Node.val = {}'.format(self.val)
-    
-    def __str__ (self):
+
+    def __str__(self):
         """
         string representation of node for user
         """
         return self.val
 
-    
