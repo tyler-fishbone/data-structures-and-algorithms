@@ -19,7 +19,6 @@ def no_repeat_string():
     return 'The last time I saw Richard it was Detroit in 68...'
 
 
-
 @pytest.fixture
 def empty_string():
     """Return string."""
