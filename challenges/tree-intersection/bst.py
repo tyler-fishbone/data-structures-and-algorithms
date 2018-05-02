@@ -77,6 +77,7 @@ class BST:
             if node.left is not None:
                 _walk(node.left)
             
+            print(node.val)
             function_lambda(node)
             
             if node.right is not None:
