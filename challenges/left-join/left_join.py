@@ -14,7 +14,7 @@ def left_join(ht_syn, ht_ant):
         # import pdb; pdb.set_trace()
         # print(ht_syn.buckets)
         # print(entry)
-        if entry.head.val is not None:
+        if entry.head is not None:
 
             current_dict = entry.head.val
             

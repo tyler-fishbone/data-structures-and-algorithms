@@ -7,10 +7,10 @@ def ht_syn_one():
     ht = HashTable(10)
     # import pdb; pdb.set_trace()
     ht.set('fond', 'enamored')
-    # ht.set('wrath', 'anger')
-    # ht.set('diligent', 'employed')
-    # ht.set('outfit', 'garb')
-    # ht.set('guide', 'usher')
+    ht.set('wrath', 'anger')
+    ht.set('diligent', 'employed')
+    ht.set('outfit', 'garb')
+    ht.set('guide', 'usher')
     return ht
 
 
@@ -21,7 +21,7 @@ def ht_ant_one():
     ht.set('fond', 'averse')
     ht.set('wrath', 'delight')
     ht.set('diligent', 'idle')
-    # ht.set('outfit', 'follow')
+    ht.set('outfit', 'follow')
     ht.set('guide', 'jam')
     return ht
 

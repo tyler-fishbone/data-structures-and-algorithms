@@ -25,7 +25,10 @@ class LinkedList:
             self.insert(item)
         
     def __repr__(self):
-        return '<head> => {}'.format(self.head.val)
+        if self.head is None:
+            return '<head> => {}'.format(None)
+        else:
+            return '<head> => {}'.format(self.head.val)
 
     def __len__(self):
         return self._size
