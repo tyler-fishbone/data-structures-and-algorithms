@@ -9,8 +9,11 @@ class HashTable:
             raise TypeError
         self.max_size = max_size
         self.buckets = [LinkedList() for _ in range(self.max_size)]
+        
+        # [LinkedList()] * self.max_size
+        # LL() for _ in range(self.max_size)
 
-    def _hash_key(self, key):
+    def hash_key(self, key):
         """Hash key."""
         if type(key) is not str:
             raise TypeError
@@ -25,15 +28,15 @@ class HashTable:
         if type(key) is not str:
             raise TypeError
 
-        self.buckets[self._hash_key(key)].insert({key: val})
-        self.buckets[self._hash_key(key)]._size += 1
+        self.buckets[self.hash_key(key)].insert({key: val})
+        self.buckets[self.hash_key(key)]._size += 1
 
     def get(self, key):
         """Get value in hash table."""
         if type(key) is not str:
             raise TypeError
 
-        current = self.buckets[self._hash_key(key)].head
+        current = self.buckets[self.hash_key(key)].head
         while current:
             if key in current.val:
                 return current.val[key]
@@ -57,14 +60,14 @@ class HashTable:
             raise TypeError
         
         if all_or_none == 'all':
-            self.buckets[self._hash_key(key)].head = None
+            self.buckets[self.hash_key(key)].head = None
 
-        current = self.buckets[self._hash_key(key)].head
+        current = self.buckets[self.hash_key(key)].head
         previous = None
         while current:
             if key in current.val:
                 if previous is None:
-                    self.buckets[self._hash_key(key)].head = current._next
+                    self.buckets[self.hash_key(key)].head = current._next
                     return current.val[key]
                 else:
                     previous._next = current._next
