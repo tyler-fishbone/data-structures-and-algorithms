@@ -9,9 +9,6 @@ class HashTable:
             raise TypeError
         self.max_size = max_size
         self.buckets = [LinkedList() for _ in range(self.max_size)]
-        
-        # [LinkedList()] * self.max_size
-        # LL() for _ in range(self.max_size)
 
     def hash_key(self, key):
         """Hash key."""
@@ -43,7 +40,7 @@ class HashTable:
             current = current._next
 
         print('The key {} is not in this hash table'.format(key))
-        return False
+        return None
 
 
     def remove(self, key='', all_or_none=None):
