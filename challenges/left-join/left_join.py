@@ -25,5 +25,5 @@ def left_join(ht_syn, ht_ant):
                 entry.head.val[word_key],
                 ht_ant.get(word_key)
             ])
-    
+    print(output_list)
     return output_list
