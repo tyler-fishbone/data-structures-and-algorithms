@@ -9,5 +9,9 @@ For more recipes, like how to do a recursive mergesort on an unstorted list, che
 * Write at least three test assertions for each method that you define.
 
 
+## Resources Used
+* http://interactivepython.org/courselib/static/pythonds/SortSearch/TheMergeSort.html
+* https://visualgo.net/bn/sorting
+
 ## Solution
-![Solution](../../assets/36_mergesort.JPG)
+![Solution](../../../assets/36_mergesort.JPG)
