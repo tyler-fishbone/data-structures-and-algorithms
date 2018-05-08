@@ -3,7 +3,7 @@ def mergesort(input_list):
     Given an list of values, sort the list into
     ascending order and return it.
     """
-    # recurse following function until input is single element
+    # recurse following function until input is single elements
     if len(input_list) > 1:
         # split list
         mid = len(input_list) // 2
@@ -20,25 +20,27 @@ def mergesort(input_list):
         k = 0  # input list
 
         # place items back into input list in correct order
-        while i < len(left_side) and j < len(right_side):
-            if left_side[i] < right_side[j]:
+        try:
+            while i < len(left_side) and j < len(right_side):
+                if left_side[i] < right_side[j]:
+                    input_list[k] = left_side[i]
+                    i = i + 1
+                else:
+                    input_list[k] = right_side[j]
+                    j = j + 1
+                k = k + 1
+            
+            # when one list has been exhausted place items
+            # from other list into it in order
+            while i < len(left_side):
                 input_list[k] = left_side[i]
                 i = i + 1
-            else:
+                k = k + 1
+            
+            while j < len(right_side):
                 input_list[k] = right_side[j]
                 j = j + 1
-            k = k + 1
-        
-        # when one list has been exhausted place items
-        # from other list into it in order
-        while i < len(left_side):
-            input_list[k] = left_side[i]
-            i = i + 1
-            k = k + 1
-        
-        while j < len(right_side):
-            input_list[k] = right_side[j]
-            j = j + 1
-            k = k + 1
-        
-        
+                k = k + 1
+        except TypeError:
+            print('All data must be same type i.e. int, str, etc...')
+            return None

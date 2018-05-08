@@ -46,5 +46,4 @@ def test_empty_list(empty_list):
 
 def test_mutiple_data_types(list_multiple_data_types):
     """Test list containing mutliple datatypes."""
-    with pytest.raises(TypeError):
-        mergesort(list_multiple_data_types)
+    assert mergesort(list_multiple_data_types) is None
