@@ -10,9 +10,6 @@ Utilize the Single-responsibility principle: any methods you write should be cle
 
 Write at least three test assertions for each method that you define.
 
-Ensure your tests are passing before you submit your solution.
-
-
 
 ## Solution
 ![Solution](../../assets/36_mergesort.JPG)
