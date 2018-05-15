@@ -1,10 +1,4 @@
 # Data Structure & Algorithms
-A repository for keeping my practice work with data structures and algorithms.
-
-
-
-
-# Data Structure & Algorithms
 
 **Verision** -  1.26.0
 
