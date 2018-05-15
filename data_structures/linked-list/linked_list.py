@@ -43,10 +43,13 @@ class LinkedList:
         """
         appends a value at the end of the linked list
         """
+        if self.head is None:
+            self.head = Node(val)
+            return self.head
         temp = self.head
-        while temp:
+        while temp._next:
             temp = temp._next
-        self.insert(val)
+        temp._next = Node(val)
         self._size += 1
         return self._size
 
@@ -69,15 +72,14 @@ class LinkedList:
             previous = current
             current = current._next
 
-    
     def insert_after(self, value, newVal):
         """
-        inserts a node after a specified node
+        Insert a node after a specified node.
         """
         temp = self.head
         while temp:
             if temp.val == value:
-                temp._next = Node('X', temp._next)
+                temp._next = Node(newVal, temp._next)
                 self._size += 1
                 return self._size
             temp = temp._next
@@ -127,7 +129,8 @@ def merge_lists(a, b):
 def has_loop(input_ll):
     """
     this method will return true of false based on whether a linked list is 'circular',
-    meanding that it has a value who's ._next property points to itself
+    meanding that it has a value who's ._next property points to another node in
+    the linked list.
     """
     try:
         current = input_ll.head
