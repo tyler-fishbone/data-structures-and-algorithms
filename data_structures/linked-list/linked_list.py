@@ -7,7 +7,6 @@ class LinkedList:
     '''
 
     def __init__(self, iter=[]):
-        self._current = None
         self.head = None
         self._size = 0
         if type(iter) is not list:
@@ -16,7 +15,9 @@ class LinkedList:
             self.insert(item)
         
     def __repr__(self):
-        return '<head> => {}'.format(self.head.val)
+        if self._size < 1:
+            return '<head> => None'
+        return '<head> => {}'.format(self.head)
 
     def __len__(self):
         return self._size
@@ -30,7 +31,7 @@ class LinkedList:
     
     def find(self, val):
         """
-        returns true of false if inputted value is in linked list - 0(n)
+        returns true or false if input value is in linked list - 0(n)
         """
         temp = self.head
         while(temp):
@@ -100,6 +101,18 @@ class LinkedList:
             return temp
         else:
             raise AttributeError('Your input value is larger than the linked list')
+    
+    def linked_list_vals_as_list(self):
+        """
+        Print linked list represented as a list.
+        """
+        temp = self.head
+        output_list = []
+        while temp:
+            output_list.append(temp.val)
+            temp = temp._next
+        print(output_list)
+        return output_list
 
 
 def merge_lists(a, b):
